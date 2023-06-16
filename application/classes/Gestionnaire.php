@@ -1,7 +1,6 @@
 <?php 
-	class Gestionnaire {
+	class Gestionnaire extends Employe {
 		public $id;
-		public $salaire_mensuel;
 		public function salaire($bonus_annuel){
 
 		}

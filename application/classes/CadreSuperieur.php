@@ -1,7 +1,6 @@
 <?php 
-	class CadreSuperieur {
+	class CadreSuperieur extends Employe{
 		public $id;
-		public $salaire_mensuel;
 		public function salaire($salaire_annuel){
 
 		}

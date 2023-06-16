@@ -11,4 +11,6 @@
 			return $this->salaire_mensuel;
 		}
 	}
+
+	$obj = new Employe();
 ?>
