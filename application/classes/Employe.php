@@ -12,5 +12,4 @@
 		}
 	}
 
-	$obj = new Employe();
 ?>
