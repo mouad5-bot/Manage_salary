@@ -3,6 +3,10 @@ include 'Employe.php';
 	class Gestionnaire extends Employe {
 		public $id;
 		public $salaire_de_base = 3000;
+
+		public function __construct($id, $nom){
+			parent::__construct($id, $nom);
+		}
 	
 		public function salaire($bonus_annuel){
 			$this->salaire_mensuel = $this->salaire_de_base + ($bonus_annuel / 12);
@@ -13,7 +17,7 @@ include 'Employe.php';
 		}
 	}
 
-	$obj = new Gestionnaire();
+	$obj = new Gestionnaire(1, "john");
 	$obj->salaire(1200);
-	var_dump($obj);
+	echo json_encode($obj);
 ?>
