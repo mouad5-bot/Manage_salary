@@ -3,8 +3,16 @@ include 'Employe.php';
 	class EmployeRegulier extends Employe {
 		public $id;
 		public $nbr_heur_travailler = 150;
+
+		public function __construct($id, $nom){
+			parent::__construct($id, $nom);
+		}
 	
 		public function salaire($taux_horaire_fixe){
+			if($taux_horaire_fixe < 0){
+				echo 'error: le taux horaire ne peut pas étre nigative';
+				return ;
+			}
 			$this->salaire_mensuel = $this->nbr_heur_travailler * $taux_horaire_fixe;
 		}
 
@@ -13,7 +21,7 @@ include 'Employe.php';
 		}
 	}
 
-	$obj = new EmployeRegulier();
+	$obj = new EmployeRegulier(29, "Ahmed");
 	$obj->salaire(20);
 	var_dump($obj);
 
