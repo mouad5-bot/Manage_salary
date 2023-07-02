@@ -1,4 +1,5 @@
 <?php 
+include '../config/connection.php';
 	class Employe {
 		public $id;
 		public $nom;

@@ -1,5 +1,7 @@
 <?php 
 include 'Employe.php';
+include '../config/connection.php';
+
 	class Gestionnaire extends Employe {
 		public $id;
 		public $salaire_de_base = 3000;
@@ -14,7 +16,9 @@ include 'Employe.php';
 			    throw new Exception('le bonus ennuel ne peut pas être négative');
 			
 			$this->salaire_mensuel = $this->salaire_de_base + ($bonus_annuel / 12);
+			
 		}
+
 
 		public function getSalaire(){
 			return $this->salaire_mensuel;

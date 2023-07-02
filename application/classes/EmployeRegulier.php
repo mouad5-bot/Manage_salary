@@ -1,5 +1,7 @@
 <?php
 include 'Employe.php';
+include '../config/connection.php';
+
 	class EmployeRegulier extends Employe {
 		public $id;
 		public $nbr_heur_travailler = 150;

@@ -1,5 +1,6 @@
 <?php 
 include 'Employe.php';
+include '../config/connection.php';
 	class CadreSuperieur extends Employe{
 		public $id;
 
