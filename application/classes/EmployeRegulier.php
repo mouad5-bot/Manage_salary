@@ -6,8 +6,8 @@ include '../config/connection.php';
 		public $id;
 		public $nbr_heur_travailler = 150;
 
-		public function __construct($id, $nom){
-			parent::__construct($id, $nom);
+		public function __construct($id, $nom, $salaire_de_base){
+			parent::__construct($id, $nom, $salaire_de_base);
 		}
 	
 		public function salaire($taux_horaire_fixe){
@@ -16,6 +16,17 @@ include '../config/connection.php';
 				return ;
 			}
 			$this->salaire_mensuel = $this->nbr_heur_travailler * $taux_horaire_fixe;
+
+			$sql = "INSERT INTO employeregulier (id, employe_id, nombre_heurs, salaire_mensuel)
+			VALUES (3, 3, $this->nbr_heur_travailler, $this->salaire_mensuel)";
+
+			if ($GLOBALS['connection']->query($sql) === TRUE) {
+			echo "New record created successfully";
+			} else {
+			echo "Error: " . $sql . "<br>" . $GLOBALS['connection']->error;
+			}
+
+			$GLOBALS['connection']->close();						
 		}
 
 		public function getSalaire(){
@@ -23,7 +34,7 @@ include '../config/connection.php';
 		}
 	}
 
-	$obj = new EmployeRegulier(29, "Ahmed");
+	$obj = new EmployeRegulier(29, "Ahmed", 4000);
 	$obj->salaire(20);
 	var_dump($obj);
 

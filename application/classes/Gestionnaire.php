@@ -4,10 +4,9 @@ include '../config/connection.php';
 
 	class Gestionnaire extends Employe {
 		public $id;
-		public $salaire_de_base = 3000;
 
-		public function __construct($id, $nom){
-			parent::__construct($id, $nom);
+		public function __construct($id, $nom, $salaire_de_base){
+			parent::__construct($id, $nom, $salaire_de_base);
 		}
 	
 		public function salaire($bonus_annuel){
@@ -16,7 +15,17 @@ include '../config/connection.php';
 			    throw new Exception('le bonus ennuel ne peut pas être négative');
 			
 			$this->salaire_mensuel = $this->salaire_de_base + ($bonus_annuel / 12);
-			
+
+			$sql = "INSERT INTO gestionnaire (id, employe_id, salaire_de_base, salaire_mensuel, bonus_annuel)
+			VALUES (3, 2, $this->salaire_de_base, $this->salaire_mensuel, $bonus_annuel)";
+
+			if ($GLOBALS['connection']->query($sql) === TRUE) {
+			echo "New record created successfully";
+			} else {
+			echo "Error: " . $sql . "<br>" . $GLOBALS['connection']->error;
+			}
+
+			$GLOBALS['connection']->close();						
 		}
 
 
@@ -25,7 +34,7 @@ include '../config/connection.php';
 		}
 	}
 
-	$obj = new Gestionnaire(1, "john");
-	$obj->salaire(-1200);
+	$obj = new Gestionnaire(1, "test", 5000);
+	$obj->salaire(5200);
 	echo json_encode($obj);
 ?>

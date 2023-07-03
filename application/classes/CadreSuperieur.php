@@ -4,8 +4,8 @@ include '../config/connection.php';
 	class CadreSuperieur extends Employe{
 		public $id;
 
-		public function __construct($id, $nom){
-			parent::__construct($id, $nom);
+		public function __construct($id, $nom, $salaire_de_base){
+			parent::__construct($id, $nom, $salaire_de_base);
 		}
 		public function salaire($salaire_annuel){
 			if($salaire_annuel < 0){
@@ -14,13 +14,24 @@ include '../config/connection.php';
 			}
 			
 			$this->salaire_mensuel =$salaire_annuel / 12;
+
+			$sql = "INSERT INTO cadresuperieur (id, employe_id, salaire_annuel, salaire_mensuel)
+			VALUES (2, 3, $salaire_annuel, $this->salaire_mensuel)";
+
+			if ($GLOBALS['connection']->query($sql) === TRUE) {
+			echo "New record created successfully";
+			} else {
+			echo "Error: " . $sql . "<br>" . $GLOBALS['connection']->error;
+			}
+
+			$GLOBALS['connection']->close();	
 		}
 
 		public function getSalaire(){
 			return $this->salaire_mensuel;
 		}
 	}
-	$obj = new CadreSuperieur(3, "mhamed");
-	$obj->salaire(60000);
+	$obj = new CadreSuperieur(3, "mhamed", 3600);
+	$obj->salaire(50000);
 	var_dump($obj);
 ?>

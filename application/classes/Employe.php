@@ -7,9 +7,10 @@ include '../config/connection.php';
 		public $salaire_de_base;
 		
 
-		public function __construct($id, $nom){
+		public function __construct($id, $nom, $salaire_de_base){
 			$this->id = $id;
 			$this->nom = $nom;
+			$this->salaire_de_base = $salaire_de_base;
 		}
 
 		public function salaire($salaire_de_base){
