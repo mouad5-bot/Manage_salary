@@ -2,7 +2,7 @@
 include 'Employe.php';
 include '../config/connection.php';
 	class CadreSuperieur extends Employe{
-		public $id;
+		public $salaire_annuel;
 
 		public function __construct($id, $nom, $salaire_de_base){
 			parent::__construct($id, $nom, $salaire_de_base);

@@ -3,10 +3,9 @@ include 'Employe.php';
 include '../config/connection.php';
 
 	class EmployeRegulier extends Employe {
-		public $id;
-		public $nbr_heur_travailler = 150;
+		public $nbr_heur_travailler;
 
-		public function __construct($id, $nom, $salaire_de_base){
+		public function __construct($id, $nom, $salaire_de_base, $nbr_heur_travailler){
 			parent::__construct($id, $nom, $salaire_de_base);
 		}
 	
@@ -34,7 +33,7 @@ include '../config/connection.php';
 		}
 	}
 
-	$obj = new EmployeRegulier(29, "Ahmed", 4000);
+	$obj = new EmployeRegulier(29, "Ahmed", 4000, 150);
 	$obj->salaire(20);
 	var_dump($obj);
 

@@ -3,7 +3,7 @@ include 'Employe.php';
 include '../config/connection.php';
 
 	class Gestionnaire extends Employe {
-		public $id;
+		public $bonus_annuel;
 
 		public function __construct($id, $nom, $salaire_de_base){
 			parent::__construct($id, $nom, $salaire_de_base);
